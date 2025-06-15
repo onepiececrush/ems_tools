@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal Persistence Test</title>
+</head>
+<body>
+    <h1>Terminal State Persistence Test</h1>
+    <button onclick="checkLocalStorage()">Check localStorage</button>
+    <button onclick="clearLocalStorage()">Clear localStorage</button>
+    <pre id="output"></pre>
+
+    <script>
+        function checkLocalStorage() {
+            const output = document.getElementById('output');
+            const terminalState = localStorage.getItem('terminal-state');
+            
+            if (terminalState) {
+                const parsed = JSON.parse(terminalState);
+                output.textContent = JSON.stringify(parsed, null, 2);
+            } else {
+                output.textContent = 'No terminal state found in localStorage';
+            }
+        }
+
+        function clearLocalStorage() {
+            localStorage.removeItem('terminal-state');
+            document.getElementById('output').textContent = 'Terminal state cleared';
+        }
+
+        // Auto check on load
+        checkLocalStorage();
+    </script>
+</body>
+</html>

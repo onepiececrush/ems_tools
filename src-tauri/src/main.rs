@@ -59,7 +59,7 @@ fn main() {
     
     // 初始化SSH会话状态
     let ssh_state = ssh::init_ssh_state();
-    
+
     tauri::Builder::default()
         .manage(AppState {
             log_entries: Mutex::new(Vec::new()),
@@ -68,6 +68,9 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             ssh::connect,
             ssh::disconnect,
+            ssh::execute_terminal_command,
+            ssh::get_current_directory,
+            ssh::check_connection_status,
             file_transfer::upload_file,
             network::get_network_interfaces,
             network::get_interface_config,
@@ -77,6 +80,10 @@ fn main() {
             service::start_service,
             service::stop_service,
             service::get_service_status,
+            service::search_services,
+            service::diagnose_service,
+            service::find_service_executable,
+            service::force_stop_service,
             logger::get_logs,
             logger::add_log,
             logger::clear_logs,

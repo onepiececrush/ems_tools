@@ -2,7 +2,7 @@
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
-    "devPath": "../src",
+    "devPath": "http://localhost:1420",
     "distDir": "../dist",
     "withGlobalTauri": true
   },
@@ -42,8 +42,10 @@
         "fullscreen": false,
         "resizable": true,
         "title": "EMS Tools",
-        "width": 800,
-        "height": 600
+        "width": 1200,
+        "height": 800,
+        "minWidth": 1000,
+        "minHeight": 700
       }
     ]
   }
